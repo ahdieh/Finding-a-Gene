@@ -12,8 +12,8 @@ public class FindGeneSimpleAndTest {
         //stop codon is "TAA"
         int startIndex = dna.indexOf("ATG");
         int stopIndex = dna.indexOf("TAA", startIndex + 3);
-        if (startIndex == -1) result = "";
-        else if (stopIndex == -1) result = "";
+        if (startIndex == -1) result = ""; // no "ATG"
+        else if (stopIndex == -1) result = ""; // no "TAA
         else result = dna.substring(startIndex, stopIndex + 3);
         return result;
     }
@@ -28,12 +28,12 @@ public class FindGeneSimpleAndTest {
         System.out.println("DNA strand is " + dna);
         gene = findGeneSimple(dna);
         System.out.println("Gene is " + gene);
-        
+        // no "ATG"
         dna = "TGTAA";
         System.out.println("DNA strand is " + dna);
         gene = findGeneSimple(dna);
         System.out.println("Gene is " + gene);
-        
+        // no "TAA"
         dna = "ATGTA";
         System.out.println("DNA strand is " + dna);
         gene = findGeneSimple(dna);
