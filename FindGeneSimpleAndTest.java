@@ -7,15 +7,20 @@
  */
 public class FindGeneSimpleAndTest {
     public String findGeneSimple(String dna) {
-        String result = "";
+        String gene = "";
         //start codon is "ATG"
         //stop codon is "TAA"
         int startIndex = dna.indexOf("ATG");
-        int stopIndex = dna.indexOf("TAA", startIndex + 3);
-        if (startIndex == -1) result = ""; // no "ATG"
-        else if (stopIndex == -1) result = ""; // no "TAA
-        else result = dna.substring(startIndex, stopIndex + 3);
-        return result;
+        if (startIndex == -1) gene = ""; // no "ATG"
+        else {  
+            int stopIndex = dna.indexOf("TAA", startIndex + 3);
+            if (stopIndex == -1) gene = "";  // no "TAA"   
+            while ((stopIndex - startIndex) % 3 == 0 && stopIndex == -1 && startIndex == -1) {
+            stopIndex =  dna.indexOf("TAA", stopIndex + 3);
+            //if (stopIndex == -1) gene = "";  // no "TAA" 
+        }
+    }
+    return gene; 
     }
 
     public void testFindGeneSimple(){
