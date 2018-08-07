@@ -42,6 +42,15 @@ public class FindGeneSimpleAndTest {
         if (count >= 2) result = true;
         return result;
     }
+    
+    public String lastPart(String stringa, String stringb){
+        int start = 0;        
+            if (stringb.indexOf(stringa) != -1){
+            start = stringb.indexOf(stringa) + stringa.length();
+            stringb = stringb.substring(start);
+            }  
+        return stringb;
+    }
 
     public void testFindGeneSimple(){
         System.out.println();
@@ -97,5 +106,14 @@ public class FindGeneSimpleAndTest {
         System.out.println("\nString1 = " + dna + "\nString2 = " + dna1 
         + "\nTwo occurances is " + twoOccurrences(dna1, dna));
         
+        dna = "AATGCGTAATATGGT";
+        dna1 = "TAA";
+        System.out.println("\nString1 = " + dna + "\nString2 = " + dna1 
+        + "\nString1 - String2 = " + lastPart(dna1, dna));
+        
+        dna = "AATGCGTATATGGT";
+        dna1 = "TAA";
+        System.out.println("\nString1 = " + dna + "\nString2 = " + dna1 
+        + "\nString1 - String2 = " + lastPart(dna1, dna));
     }
 }
