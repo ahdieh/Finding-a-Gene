@@ -29,6 +29,19 @@ public class FindGeneSimpleAndTest {
     }
     return gene; 
     }
+    
+    public boolean twoOccurrences(String stringa, String stringb){
+        int count = 0, start = 0;
+        boolean result = false; 
+        for (int i = start; i < stringb.length(); i++){
+            if (stringb.indexOf(stringa, start) != -1) {
+                count++;
+                start = stringb.indexOf(stringa) + stringa.length();                
+            } 
+        }
+        if (count >= 2) result = true;
+        return result;
+    }
 
     public void testFindGeneSimple(){
         System.out.println();
@@ -73,5 +86,16 @@ public class FindGeneSimpleAndTest {
         gene = findGeneSimple(dna);
         if (gene == "") System.out.println("There is no Gene.");
         else System.out.println("Gene is " + gene + ".");
+        
+        dna = "AATGCGTAATATGGT";
+        String dna1 = "ATG";
+        System.out.println("\nString1 = " + dna + "\nString2 = " + dna1 
+        + "\nTwo occurances is " + twoOccurrences(dna1, dna));
+        
+        dna = "AATGCGTAATATGGT";
+        dna1 = "TAA";
+        System.out.println("\nString1 = " + dna + "\nString2 = " + dna1 
+        + "\nTwo occurances is " + twoOccurrences(dna1, dna));
+        
     }
 }
