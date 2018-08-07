@@ -29,26 +29,31 @@ public class FindGeneSimpleAndTest {
         String dna = "AATGCGTAATATGGT";
         System.out.println("DNA strand is " + dna);
         String gene = findGeneSimple(dna);
-        System.out.println("Gene is " + gene);
+        if (gene == "") System.out.println("There is no Gene.");
+        else System.out.println("Gene is " + gene + ".");
         
         dna = "ATGTAA";
         System.out.println("DNA strand is " + dna);
         gene = findGeneSimple(dna);
-        System.out.println("Gene is " + gene);
+        if (gene == "") System.out.println("There is no Gene.");
+        else System.out.println("Gene is " + gene + ".");
         // no "ATG"
         dna = "TGTAA";
         System.out.println("DNA strand is " + dna);
         gene = findGeneSimple(dna);
-        System.out.println("Gene is " + gene);
+        if (gene == "") System.out.println("There is no Gene.");
+        else System.out.println("Gene is " + gene + ".");
         // no "TAA"
         dna = "ATGTA";
         System.out.println("DNA strand is " + dna);
         gene = findGeneSimple(dna);
-        System.out.println("Gene is " + gene);
+        if (gene == "") System.out.println("There is no Gene.");
+        else System.out.println("Gene is " + gene + ".");
         
         dna = "AATGCGTAATTAATGGT";
         System.out.println("DNA strand is " + dna);
         gene = findGeneSimple(dna);
-        System.out.println("Gene is " + gene);
+        if (gene == "") System.out.println("There is no Gene.");
+        else System.out.println("Gene is " + gene + ".");
     }
 }
