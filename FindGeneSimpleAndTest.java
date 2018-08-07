@@ -8,8 +8,14 @@
 public class FindGeneSimpleAndTest {
     public String findGeneSimple(String dna) {
         String gene = "";
+        String dnaOrig = dna;
         //start codon is "ATG"
         //stop codon is "TAA"
+        for (int i = 0; i < dna.length(); i++){
+            if (Character.isLowerCase(dna.charAt(0))) {                
+                dna = dna.toUpperCase();
+            }
+        }        
         int startIndex = dna.indexOf("ATG");
         if (startIndex == -1) gene = ""; // no "ATG"
         else {  
@@ -19,7 +25,7 @@ public class FindGeneSimpleAndTest {
             stopIndex =  dna.indexOf("TAA", stopIndex + 3);
             if (stopIndex == -1) gene = "";  // no "TAA"             
         }
-        if (stopIndex != -1 && (stopIndex - startIndex) % 3 == 0) gene = dna.substring(startIndex, stopIndex + 3);
+        if (stopIndex != -1 && (stopIndex - startIndex) % 3 == 0) gene = dnaOrig.substring(startIndex, stopIndex + 3);
     }
     return gene; 
     }
@@ -51,6 +57,18 @@ public class FindGeneSimpleAndTest {
         else System.out.println("Gene is " + gene + ".");
         
         dna = "AATGCGTAATTAATGGT";
+        System.out.println("DNA strand is " + dna);
+        gene = findGeneSimple(dna);
+        if (gene == "") System.out.println("There is no Gene.");
+        else System.out.println("Gene is " + gene + ".");
+        
+        dna = "atgctataa";
+        System.out.println("DNA strand is " + dna);
+        gene = findGeneSimple(dna);
+        if (gene == "") System.out.println("There is no Gene.");
+        else System.out.println("Gene is " + gene + ".");
+        
+        dna = "atgCTAtaa";
         System.out.println("DNA strand is " + dna);
         gene = findGeneSimple(dna);
         if (gene == "") System.out.println("There is no Gene.");
