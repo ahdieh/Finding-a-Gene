@@ -15,15 +15,17 @@ public class FindGeneSimpleAndTest {
         else {  
             int stopIndex = dna.indexOf("TAA", startIndex + 3);
             if (stopIndex == -1) gene = "";  // no "TAA"   
-            while ((stopIndex - startIndex) % 3 == 0 && stopIndex == -1 && startIndex == -1) {
+            while ((stopIndex - startIndex) % 3 != 0 && stopIndex != -1) {
             stopIndex =  dna.indexOf("TAA", stopIndex + 3);
-            //if (stopIndex == -1) gene = "";  // no "TAA" 
+            if (stopIndex == -1) gene = "";  // no "TAA"             
         }
+        if (stopIndex != -1 && (stopIndex - startIndex) % 3 == 0) gene = dna.substring(startIndex, stopIndex + 3);
     }
     return gene; 
     }
 
     public void testFindGeneSimple(){
+        System.out.println();
         String dna = "AATGCGTAATATGGT";
         System.out.println("DNA strand is " + dna);
         String gene = findGeneSimple(dna);
@@ -40,6 +42,11 @@ public class FindGeneSimpleAndTest {
         System.out.println("Gene is " + gene);
         // no "TAA"
         dna = "ATGTA";
+        System.out.println("DNA strand is " + dna);
+        gene = findGeneSimple(dna);
+        System.out.println("Gene is " + gene);
+        
+        dna = "AATGCGTAATTAATGGT";
         System.out.println("DNA strand is " + dna);
         gene = findGeneSimple(dna);
         System.out.println("Gene is " + gene);
