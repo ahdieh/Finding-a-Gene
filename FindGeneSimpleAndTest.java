@@ -5,6 +5,8 @@
  * @author Ahdieh
  * @version Aug 02, 2018
  */
+import edu.duke.*;
+
 public class FindGeneSimpleAndTest {
     public String findGeneSimple(String dna) {
         String gene = "";
@@ -50,6 +52,17 @@ public class FindGeneSimpleAndTest {
             stringb = stringb.substring(start);
             }  
         return stringb;
+    }
+    
+    public void checkUrl(){
+        URLResource url = new URLResource("http://www.dukelearntoprogram.com/course2/data/manylinks.html");
+        for (String uWord : url.words()){
+            String word = uWord.toLowerCase();
+            if (word.contains("youtube.com")){
+                String link = word.substring(word.indexOf("\""), word.lastIndexOf("\"") + 1);
+                System.out.println(link);
+            }
+        }
     }
 
     public void testFindGeneSimple(){
